@@ -1,6 +1,7 @@
 #include <iostream>
 #include "handest_defs.h"
 #include "Grabber/kinect_grabber.h"
+#include "Visualizer/visualizerGL.h"
 
 using namespace std;
 
@@ -14,8 +15,10 @@ int main()
         Point3D::Cloud scene;
         grabber->grab();
         grabber->getCloud(scene);
-        //Visualizer* visualizer = createVisualizerGL();
-        //visualizer->showCloud(scene);
+        Visualizer* visualizer = createVisualizerGL();
+		RGBA colour;
+        visualizer->addCloud(scene, colour);
+		visualizer->show();
         //Filter* filter = createFilterPCL();
         Point3D::Cloud hand_cloud;
         //filter->FilterScene(scene, hand_cloud);
